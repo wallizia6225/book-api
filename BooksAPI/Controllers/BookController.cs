@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BooksAPI.Entity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BooksAPI.Controllers
@@ -10,7 +11,12 @@ namespace BooksAPI.Controllers
         [HttpGet]
         public IActionResult GetBooks()
         {
-            return Ok(new[] { "Book1", "Book2" });
+            var books = new List<Book>
+            {
+                new Book { Id = 1, Title = "Clean Code", Author = "Robert Martin" },
+                new Book { Id = 2, Title = "Design Patterns", Author = "Gang of Four" }
+            };
+            return Ok(books);
         }
     }
 }
